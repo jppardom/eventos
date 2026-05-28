@@ -20,4 +20,11 @@ class ModeloPersona {
 
 
     }
+
+    public static function traerDatos (){
+        $stm = conexion::conectar()->prepare("SELECT * FROM peliculas");
+        $stm->execute();
+        return $stm->fetchAll();
+      
+    }
 }

@@ -132,6 +132,56 @@
                           </div>
                       </div>
                   </div>
+
+                  <!-- Tabla para presentar los datos de película -->
+                  <table id="tablePeliculas" class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                              <th>ID</th>
+                              <th>NOMBRE</th>
+                              <th>GÉNERO</th>
+                              <th>LENGUAJE</th>
+                              <th>ACTOR</th>
+                              <th>AÑO</th>
+                              <th>DOBLADA</th>
+                              <th>ACCIONES</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $dataPeliculas = $objPelicula->ctrlCargarDatos();
+                        foreach($dataPeliculas as $key=>$value){
+                        ?>
+                          <tr>
+                              <td><?php echo $value ["id_pelicula"];  ?></td>
+                              <td><?php echo $value ["nombre"];  ?></td>
+                              <td><?php echo $value ["genero"];  ?></td>
+                              <td><?php echo $value ["lenguaje"];  ?></td>
+                              <td><?php echo $value ["actor"];  ?></td>
+                              <td><?php echo $value ["anio"];  ?></td>
+                              <td><?php echo $value ["doblada"];  ?></td>
+                              <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-danger"><i class="fas fa-trash-alt" style="color: rgb(0, 0, 0);"></i></button>
+                                </div>
+                              </td>
+                          </tr>
+                          <?php }  ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>ID</th>
+                              <th>NOMBRE/th>
+                              <th>GÉNERO</th>
+                              <th>LENGUAJE</th>
+                              <th>ACTOR</th>
+                              <th>AÑO</th>
+                              <th>DOBLADA</th>
+                              <th>ACCIONES</th>
+                          </tr>
+                      </tfoot>
+                  </table>
               </div>
               <!-- /.card-body -->
 

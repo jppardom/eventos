@@ -1,5 +1,6 @@
 <?php
 class ControladorPersona{
+    #Función para preparar los datos para guardar
     public function ctrlGuardarPersona (){
         
         
@@ -50,5 +51,12 @@ class ControladorPersona{
                 ';
             }
          }
+    }
+
+    #Función para preparar datos la una consulta
+    public function ctrlCargarDatos (){
+        $res = ModeloPersona::traerDatos();
+        return $res ;
+
     }
 }
