@@ -54,8 +54,8 @@ class ControladorPersona{
     }
 
     #Función para preparar datos la una consulta
-    public function ctrlCargarDatos (){
-        $res = ModeloPersona::traerDatos();
+    public static function ctrlCargarDatos ($parametro, $id){
+        $res = ModeloPersona::traerDatos($parametro, $id);
         return $res ;
 
     }
