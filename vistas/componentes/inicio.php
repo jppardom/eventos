@@ -45,6 +45,29 @@
         </div>
         <!-- Trajeta 1 Fin-->
 
+        <!-- Default box 2 -->
+    <div class="card">
+
+    </div>
+    <?php
+      $objInvitados = new ControladorInvitado();
+      $data = $objInvitados->ctrlContarInvitados();
+    ?>
+    <div class="col-lg-3 col-6">
+
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3><?php echo $data['numeroInvitados'] ?></h3>
+                <p>Invitados registrados</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-user-secret"></i>
+            </div>
+            <a href="Invitados" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- Trajeta 2 Fin-->
+
 
       </div>
     </div>
