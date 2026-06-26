@@ -44,6 +44,7 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"]=="activo")){
     if ($_GET["enlace"]== "inicio" ||
         $_GET["enlace"]== "salir" ||
         $_GET["enlace"]== "peliculas" ||
+        $_GET["enlace"]== "Invitados" ||
         $_GET["enlace"]== "usuarios")
       {
         include "vistas/componentes/".$_GET["enlace"].".php";
