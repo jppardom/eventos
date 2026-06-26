@@ -49,7 +49,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="Invitados" class="nav-link">
               <i class="fas fa-user-secret"></i>
               <p>
                 Invitados
