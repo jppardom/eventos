@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,16 +23,16 @@ session_start();
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  
+
 </head>
 
 
 <?php
 
-if (isset($_SESSION["login"]) && ($_SESSION["login"]=="activo")){
-  
+if (isset($_SESSION["login"]) && ($_SESSION["login"] == "activo")) {
+
   echo '<body class="hold-transition sidebar-mini">';
-    
+
 
   echo '<div class="wrapper">';
 
@@ -40,26 +41,26 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"]=="activo")){
 
   //Rutas de nuestra aplicación
 
-  if (isset($_GET["enlace"])){
-    if ($_GET["enlace"]== "inicio" ||
-        $_GET["enlace"]== "salir" ||
-        $_GET["enlace"]== "peliculas" ||
-        $_GET["enlace"]== "Invitados" ||
-        $_GET["enlace"]== "usuarios")
-      {
-        include "vistas/componentes/".$_GET["enlace"].".php";
-      }
-      else{
-        include "vistas/componentes/404.php";
-      }
-  }else{
+  if (isset($_GET["enlace"])) {
+    if (
+      $_GET["enlace"] == "inicio" ||
+      $_GET["enlace"] == "salir" ||
+      $_GET["enlace"] == "peliculas" ||
+      $_GET["enlace"] == "Invitados" ||
+      $_GET["enlace"] == "usuarios" ||
+      $_GET["enlace"] == "ingresos"
+    ) {
+      include "vistas/componentes/" . $_GET["enlace"] . ".php";
+    } else {
+      include "vistas/componentes/404.php";
+    }
+  } else {
     include  "vistas/componentes/inicio.php";
   }
 
   include "vistas/componentes/footer.php";
   echo '</div>';
-}
-else{
+} else {
   echo '<body class="hold-transition login-page">';
   include  "vistas/componentes/login.php";
 }
@@ -68,11 +69,11 @@ else{
 ?>
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 
 
 <!-- jQuery -->
@@ -95,12 +96,17 @@ else{
 <script src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
- <!-- Archivos propios-->
+<!-- Archivos propios-->
 <script src="vistas/dist/js/peliculas.js"></script>
 <?php if (isset($_GET["enlace"]) && $_GET["enlace"] == "usuarios") { ?>
-<script src="vistas/dist/js/usuarios.js"></script>
+  <script src="vistas/dist/js/usuarios.js"></script>
 <?php } ?>
+
+<!-- archivos propios de ingresos-->
+<script src="vistas/dist/js/ingresos.js"></script>
+<!-- Fin de Ingresos.js-->
 
 
 </body>
+
 </html>

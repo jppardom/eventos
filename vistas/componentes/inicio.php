@@ -23,9 +23,14 @@
 
     </div>
     <?php
-      $objPelicula = new ControladorPersona();
-      $data = $objPelicula->ctrlContarPeliculas();
+    $objPelicula = new ControladorPersona();
+    $data = $objPelicula->ctrlContarPeliculas();
+
+    //Contar los ingresos
+    $objIngreso = new ControladorIngreso();
+    $dataIngresos = $objIngreso->ctrlcontarIngresos();
     ?>
+
     <div class="card-body">
       <div class="row">
         <!-- Trajeta 1 Inicio -->
@@ -45,20 +50,39 @@
         </div>
         <!-- Trajeta 1 Fin-->
 
-        <!-- Default box 2 -->
-    <div class="card">
-
-    </div>
-    <?php
-      $objInvitados = new ControladorInvitado();
-      $data = $objInvitados->ctrlContarInvitados();
-    ?>
-    <div class="col-lg-3 col-6">
-
-        <div class="small-box bg-info">
+        <!-- ****************** Trajeta2 ingresos -inicio ****************** -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
             <div class="inner">
-                <h3><?php echo $data['numeroInvitados'] ?></h3>
-                <p>Invitados registrados</p>
+              <h3><?php echo $dataIngresos['numeroIngresos']; ?></h3>
+
+              <p>Ingresos</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-address-book"></i>
+            </div>
+            <a href="ingresos" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ****************** Trajeta2 ingresos -fin ****************** -->
+
+
+        <!-- Default box 2 -->
+        <div class="card">
+
+        </div>
+
+        <?php
+        $objInvitados = new ControladorInvitado();
+        $data = $objInvitados->ctrlContarInvitados();
+        ?>
+
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3><?php echo $data['numeroInvitados'] ?></h3>
+              <p>Invitados registrados</p>
             </div>
             <div class="icon">
               <i class="fas fa-user-secret"></i>
