@@ -8,7 +8,7 @@ class ModeloIngreso
         $stm = Conexion::conectar()->prepare("INSERT INTO ingresos (id_invitado, cantidad_personas, fecha)
                                                 VALUES (:crearInvitado, :crearCantidad, :crearFecha)");
         $stm->bindParam(":crearInvitado", $data["crearInvitado"], PDO::PARAM_STR);
-        $stm->bindParam(":crearCantidad", $data["crearCantidad"], PDO::PARAM_STR);
+        $stm->bindParam(":crearCantidad", $data["crearCantidad"], PDO::PARAM_INT);
         $stm->bindParam(":crearFecha", $data["crearFecha"], PDO::PARAM_STR);
 
         if ($stm->execute()) {
@@ -44,7 +44,7 @@ class ModeloIngreso
 
         $stm->bindParam(":id_ingreso", $data["id_ingreso"], PDO::PARAM_INT);
         $stm->bindParam(":id_invitado", $data["id_invitado"], PDO::PARAM_STR);
-        $stm->bindParam(":cantidad_personas", $data["cantidad_personas"], PDO::PARAM_STR);
+        $stm->bindParam(":cantidad_personas", $data["cantidad_personas"], PDO::PARAM_INT);
         $stm->bindParam(":fecha", $data["fecha"], PDO::PARAM_STR);
 
         if ($stm->execute()) {
