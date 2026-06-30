@@ -43,8 +43,8 @@ class ModeloIngreso
             WHERE id_ingreso = :id_ingreso");
 
         $stm->bindParam(":id_ingreso", $data["id_ingreso"], PDO::PARAM_INT);
-        $stm->bindParam(":id_invitado", $data["id_invitado"], PDO::PARAM_INT);
-        $stm->bindParam(":cantidad_personas", $data["cantidad_personas"], PDO::PARAM_INT);
+        $stm->bindParam(":id_invitado", $data["id_invitado"], PDO::PARAM_STR);
+        $stm->bindParam(":cantidad_personas", $data["cantidad_personas"], PDO::PARAM_STR);
         $stm->bindParam(":fecha", $data["fecha"], PDO::PARAM_STR);
 
         if ($stm->execute()) {
