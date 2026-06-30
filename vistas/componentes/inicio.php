@@ -29,10 +29,15 @@
     //Contar los ingresos
     $objIngreso = new ControladorIngreso();
     $dataIngresos = $objIngreso->ctrlcontarIngresos();
+
+    $objEstudiante = new ControladorEstudiante();
+    $dataEstudiantes = $objEstudiante->ctrContarEstudiantes();
     ?>
 
+    <!-- ********** cuerpo de tarjetas ********** -->
     <div class="card-body">
       <div class="row">
+
         <!-- Trajeta 1 Inicio -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
@@ -50,7 +55,24 @@
         </div>
         <!-- Trajeta 1 Fin-->
 
-        <!-- ****************** Trajeta2 ingresos -inicio ****************** -->
+        <!-- ************ Trajeta2 estudiantes -inicio ********** -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3><?php echo $dataEstudiantes['numeroEstudiantes']; ?></h3>
+
+              <p>Estudiantes</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <a href="estudiantes" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ******* Trajeta2 estudiantes -fin ******* -->
+
+        <!-- ************ Trajeta3 ingresos -inicio ********** -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
@@ -65,7 +87,7 @@
             <a href="ingresos" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ****************** Trajeta2 ingresos -fin ****************** -->
+        <!-- ******* Trajeta3 ingresos -fin ******* -->
 
 
         <!-- Default box 2 -->

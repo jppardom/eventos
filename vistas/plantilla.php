@@ -48,7 +48,8 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == "activo")) {
       $_GET["enlace"] == "peliculas" ||
       $_GET["enlace"] == "Invitados" ||
       $_GET["enlace"] == "usuarios" ||
-      $_GET["enlace"] == "ingresos"
+      $_GET["enlace"] == "ingresos" ||
+      $_GET["enlace"] == "estudiantes"
     ) {
       include "vistas/componentes/" . $_GET["enlace"] . ".php";
     } else {
@@ -105,6 +106,11 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == "activo")) {
 <!-- archivos propios de ingresos-->
 <script src="vistas/dist/js/ingresos.js"></script>
 <!-- Fin de Ingresos.js-->
+
+<!-- archivos propios de estudiantes-->
+<script src="vistas/dist/js/estudiantes.js"></script>
+<!-- Fin de Estudiantes.js-->
+
 
 
 </body>
