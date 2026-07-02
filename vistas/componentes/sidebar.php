@@ -40,7 +40,7 @@
          </li>
 
          <li class="nav-item">
-           <a href="#" class="nav-link">
+           <a href="eventos" class="nav-link">
              <i class="fas fa-calendar-week"></i>
              <p>
                Eventos

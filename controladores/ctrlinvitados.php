@@ -123,4 +123,23 @@ isset($_POST["crearqr"])){
         $res = ModeloInvitado::contarInvitados();
         return $res;
     }
+
+    #Función para generar el id_invitados
+    public static function ctrlGenerarId(){
+        // Combinación de números, letras minúsculas y mayúsculas
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $codigo = '';
+        $max = strlen($caracteres) - 1;
+        do{
+
+            for ($i = 0; $i < 10; $i++) {
+                // random_int es criptográficamente seguro y mejor que rand()
+                $codigo .= $caracteres[random_int(0, $max)];
+            }
+        $res = ModeloInvitado::existeCodigo($codigo);
+        echo $res;
+        
+        }while ($res);
+        return $codigo;
+    }
 }

@@ -51,14 +51,14 @@
                 <option value="0">[Seleccione un estudiante]</option>
 
                 <?php
-                $objEstudiantes = new ControladorEstudiantes();
-                $dataestudiantes = $objEstudiantes->cargarEstudiantes();
+                $objEstudiantes = new ControladorEstudiante();
+                $dataestudiantes = $objEstudiantes->ctrlCargarDatosEstudiante(true,0);
 
                 foreach ($dataestudiantes as $key=>$value){
                 ?>
 
                 <option value="<?php echo $value["id_estudiante"]; ?>">
-                    <?php echo $value["cedula"]; ?>
+                    <?php echo "(". $value["cedula"] . ") " . $value["nombres"] . " ". $value["apellido"] ; ?>
                 </option>
 
                 <?php } ?>
@@ -79,7 +79,7 @@
                 <option value="0">[Seleccione un evento]</option>
                 <?php
                 $objEventos = new ControladorEventos();
-                $dataeventos = $objEventos->cargarEventos();
+                $dataeventos = $objEventos->ctrMostrarEventos();
                 foreach ($dataeventos as $key=>$value){
                 ?>
                 <option value="<?php echo $value["id_evento"]; ?>">
@@ -111,6 +111,11 @@
         </div>
     </div>
 </div>
+<?php
+    $objInvitado  = new ControladorInvitado();
+    $id = $objInvitado->ctrlGenerarId();
+?>
+<input type="text" name="id_invitado" class="form-control" value="<?php echo $id; ?>" placeholder="Ingrese" required>
 <div class="row">
     <div class="col-lg-6">
         <div class="input-group mb-3">
@@ -152,14 +157,14 @@
                 <option value="0">[Seleccione un estudiante]</option>
 
                 <?php
-                $objEstudiantes = new ControladorEstudiantes();
-                $dataestudiantes = $objEstudiantes->cargarEstudiantes();
+                $objEstudiantes = new ControladorEstudiante();
+                $dataestudiantes = $objEstudiantes->ctrlCargarDatosEstudiante(true, 0);
 
                 foreach ($dataestudiantes as $key=>$value){
                 ?>
 
                 <option value="<?php echo $value["id_estudiante"]; ?>">
-                    <?php echo $value["cedula"]; ?>
+                    <?php echo "(". $value["cedula"] . ") " . $value["nombres"] . " ". $value["apellido"] ; ?>
                 </option>
 
                 <?php } ?>
@@ -180,7 +185,7 @@
                 <option value="0">[Seleccione un evento]</option>
                 <?php
                 $objEventos = new ControladorEventos();
-                $dataeventos = $objEventos->cargarEventos();
+                $dataeventos = $objEventos->ctrMostrarEventos();
                 foreach ($dataeventos as $key=>$value){
                 ?>
                 <option value="<?php echo $value["id_evento"]; ?>">
@@ -237,8 +242,8 @@
                       <thead>
                           <tr>
                               <th>Id_Invitado</th>
-                              <th>id_estudiante</th>
-                              <th>Id_Evento</th>
+                              <th>Estudiante</th>
+                              <th>Evento</th>
                               <th>cupo</th>
                               <th>QR</th>
                               <th>ACCIONES</th>
@@ -266,8 +271,8 @@
                       <tfoot>
                           <tr>
                               <th>Id_Invitado</th>
-                              <th>id_estudiante</th>
-                              <th>Id_Evento</th>
+                              <th>Estudiante</th>
+                              <th>Evento</th>
                               <th>cupo</th>
                               <th>QR</th>
                               <th>ACCIONES</th>

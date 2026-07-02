@@ -1,80 +1,78 @@
 <?php
 require_once "conexion.php";
 
-class ModeloInvitado {
+class ModeloInvitado
+{
 
 
-public static function guardarInvitado($data){
+    public static function guardarInvitado($data)
+    {
 
 
-$stm = conexion::conectar()->prepare(
-"INSERT INTO invitados
+        $stm = conexion::conectar()->prepare(
+            "INSERT INTO invitados
 (id_estudiante,id_evento,cupo,codigo_qr)
 
 VALUES
 
 (:id_estudiante,:id_evento,:cupo,:codigo_qr)"
-);
+        );
 
 
 
-$stm->bindParam(":id_estudiante",$data["crearEstudiante"],PDO::PARAM_INT);
+        $stm->bindParam(":id_estudiante", $data["crearEstudiante"], PDO::PARAM_INT);
 
-$stm->bindParam(":id_evento",$data["crearEvento"],PDO::PARAM_INT);
+        $stm->bindParam(":id_evento", $data["crearEvento"], PDO::PARAM_INT);
 
-$stm->bindParam(":cupo",$data["crearCupo"],PDO::PARAM_INT);
+        $stm->bindParam(":cupo", $data["crearCupo"], PDO::PARAM_INT);
 
-$stm->bindParam(":codigo_qr",$data["crearqr"],PDO::PARAM_STR);
-
-
-
-if($stm->execute()){
-
-return "OK";
-
-}else{
-
-return "ERROR";
-
-}
+        $stm->bindParam(":codigo_qr", $data["crearqr"], PDO::PARAM_STR);
 
 
-}
+
+        if ($stm->execute()) {
+
+            return "OK";
+        } else {
+
+            return "ERROR";
+        }
+    }
 
 
 
 
-public static function traerDatos($parametro, $id){
+    public static function traerDatos($parametro, $id)
+    {
 
-if ($parametro) {
-$stm = conexion::conectar()->prepare(
+        if ($parametro) {
+            $stm = conexion::conectar()->prepare(
 
-"SELECT invitados.*,
-estudiantes.cedula AS estudiantes,
-eventos.nombre AS eventos
+                "SELECT invitados.*,
+                        CONCAT(estudiantes.nombres, ' ',estudiantes.apellido)  AS estudiantes,
+                        eventos.nombre AS eventos
 
-FROM invitados
+                        FROM invitados
 
-INNER JOIN estudiantes 
-ON invitados.id_estudiante = estudiantes.id_estudiante
+                        INNER JOIN estudiantes 
+                        ON invitados.id_estudiante = estudiantes.id_estudiante
 
-INNER JOIN eventos
-ON invitados.id_evento = eventos.id_evento");
+                        INNER JOIN eventos
+                        ON invitados.id_evento = eventos.id_evento"
+            );
 
-$stm->execute();
+            $stm->execute();
 
-return $stm->fetchAll();
-
-
-}else{
-    $stm = conexion::conectar()->prepare("SELECT * FROM invitados WHERE id_invitado = :id_invitado");
+            return $stm->fetchAll();
+        } else {
+            $stm = conexion::conectar()->prepare("SELECT * FROM invitados WHERE id_invitado = :id_invitado");
             $stm->bindParam(":id_invitado", $id, PDO::PARAM_INT);
             $stm->execute();
             return $stm->fetch();
-}
-}
+        }
+    }
 
-#Función para actualizar datos
+    #Función para actualizar datos
     public static function editarDatosI($data)
     {
 
@@ -103,9 +101,20 @@ return $stm->fetchAll();
         }
     }
     #Función para contar los registro de la tabla
-    public static function contarInvitados(){
+    public static function contarInvitados()
+    {
         $stm = conexion::conectar()->prepare("SELECT COUNT(*) AS numeroInvitados FROM invitados");
         $stm->execute();
         return $stm->fetch();
     }
+
+    #Función para verificar el id de invitado
+    public static function existeCodigo($codigo) {
+        $stm = conexion::conectar()->prepare("SELECT COUNT(*) FROM invitados WHERE id_invitado = :codigo");
+        $stm->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+        $stm->execute();
+
+        // Si el conteo es mayor a 0, el código ya existe
+        return $stm->fetchColumn() > 0;
     }
+}

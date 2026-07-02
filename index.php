@@ -26,5 +26,9 @@ require_once "modelos/mdlDatosInvitado.php";
 //modelos de estudiantes
 require_once "modelos/mdlEstudiantes.php";
 
+//Modulo de eventos
+require_once "controladores/ctrlEventos.php";
+require_once "modelos/mdlEventos.php";
+
 $objPrincipal = new Principal();
 $objPrincipal->ctrlPrincipal();
