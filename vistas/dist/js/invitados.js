@@ -100,3 +100,16 @@ $(".eliminarInvitadoTabla").click(function () {
     }
   });
 });
+
+$(".capturarEstudiantes").click(function () {
+  var id_estudiante = $(this).attr("id_estudiante");
+  var cedula = $(this).attr("cedula");
+  var nombres = $(this).attr("nombres");
+  var apellidos = $(this).attr("apellidos");
+  console.log("Elementos ", id_estudiante, cedula, nombres, apellidos)
+
+   $("#codigoEstudiante").val(id_estudiante);
+   $("#txtCedula").val(cedula);
+   $("#txtNombres").val(apellidos + " " + nombres);
+
+})
