@@ -42,6 +42,7 @@
                                       <div class="card-body">
                                           <div class="row">
                                               <!-- Persona -->
+                                               
                                               <div class="input-group mb-3">
                                                   <!-- nombre -->
                                                   <div class="input-group-prepend">
@@ -61,56 +62,54 @@
                                           </div>
                                           <div class="row">
                                               <!-- ESTUDIANTE -->
-
-
-                                              <div class="input-group mb-3">
-                                                  <select name="crearEvento" id="crearEvento" class="form-control" required>
-                                                      <option value="0">[Seleccione un evento]</option>
-                                                      <?php
-                                                        $objEventos = new ControladorEventos();
-                                                        $dataeventos = $objEventos->ctrMostrarEventos();
-                                                        foreach ($dataeventos as $key => $value) {
-                                                        ?>
-                                                          <option value="<?php echo $value["id_evento"]; ?>">
-                                                              <?php echo $value["nombre"]; ?>
-                                                          </option>
-                                                      <?php } ?>
-                                                  </select>
-                                                  <div class="input-group-append">
-                                                      <span class="input-group-text"><i class="fas fa-globe-americas"></i></span>
-                                                  </div>
-                                              </div>
-
-                                          </div>
-                                          <div class="row">
-                                              <div class="col-lg-6">
+                                               <div class="col-lg-6">
                                                   <div class="input-group mb-3">
-                                                      <input type="number" name="crearCupo" class="form-control" placeholder="Ingrese el cupo disponible" required>
+                                                      <input type="number" name="crearCupo" id="crearCupo" class="form-control" placeholder="Ingrese el cupo disponible" required>
                                                       <div class="input-group-append">
                                                           <span class="input-group-text"><i class="fas fa-signature"></i></span>
                                                       </div>
                                                   </div>
                                               </div>
+
                                               <div class="col-lg-6">
                                                   <div class="input-group mb-3">
-                                                      <input type="text" name="crearqr" class="form-control" placeholder="Ingrese el código QR" required>
+                                                      <select name="crearEvento" id="crearEvento" class="form-control" required>
+                                                          <option value="0">[Seleccione un evento]</option>
+                                                          <?php
+                                                            $objEventos = new ControladorEventos();
+                                                            $dataeventos = $objEventos->ctrMostrarEventos();
+                                                            foreach ($dataeventos as $key => $value) {
+                                                            ?>
+                                                              <option value="<?php echo $value["id_evento"]; ?>">
+                                                                  <?php echo $value["nombre"]; ?>
+                                                              </option>
+                                                          <?php } ?>
+                                                      </select>
+                                                      <div class="input-group-append">
+                                                          <span class="input-group-text"><i class="fas fa-globe-americas"></i></span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              
+
+                                          </div>
+                                          <div class="row">
+
+                                              
+                                                  <div class="input-group mb-3">
+                                                      <input type="text" name="crearqr" id="crearqr" class="form-control" placeholder="Ingrese el código QR" required>
                                                       <div class="input-group-append">
                                                           <span class="input-group-text"><i class="fas fa-qrcode"></i></span>
                                                       </div>
                                                   </div>
-                                              </div>
+                                              
                                           </div>
                                           <?php
                                             $objInvitado  = new ControladorInvitado();
                                             $id = $objInvitado->ctrlGenerarId();
                                             ?>
-                                          <input type="hidden" name="id_invitado" class="form-control" value="<?php echo $id; ?>" placeholder="Ingrese" required>
-                                          <div class="row">
-                                              <div class="col-lg-6">
-                                                  <div class="input-group mb-3">
-                                                  </div>
-                                              </div>
-                                          </div>
+                                          <input type="hidden" name="id_invitado" id="id_invitado" class="form-control" value="<?php echo $id; ?>" placeholder="Ingrese" required>
+                                          
                                       </div>
                               </div>
                               <div class="modal-footer">
@@ -140,10 +139,10 @@
                                   <table id="tableEstudiantes" class="table table-bordered table-striped">
                                       <thead>
                                           <tr>
-                                           
+
                                               <th>CEDULA</th>
                                               <th>NOMBRES</th>
-                                              
+
                                               <th>ACCIONES</th>
 
                                           </tr>
@@ -156,16 +155,16 @@
                                             foreach ($dataEstudiantes as $key => $value) {
                                             ?>
                                               <tr>
-                                                 
+
                                                   <td><?php echo $value['cedula']; ?></td>
                                                   <td><?php echo $value['nombres'] . " " . $value['apellido']; ?></td>
-                                                  
-                                                  
+
+
 
                                                   <td>
                                                       <div class="btn-group">
                                                           <button class="btn btn-warning capturarEstudiantes"
-                                                             data-dismiss="modal" data-dismiss="modal" aria-hidden="true"
+                                                              data-dismiss="modal" data-dismiss="modal" aria-hidden="true"
                                                               id_estudiante="<?php echo $value['id_estudiante']; ?>"
                                                               cedula="<?php echo $value['cedula']; ?>"
                                                               nombres="<?php echo $value['nombres']; ?>"
@@ -174,7 +173,7 @@
                                                               <i class="fas fa-edit"></i>
                                                           </button>
 
-                                                          
+
                                                           </button>
                                                       </div>
                                                   </td>
@@ -187,7 +186,7 @@
                                       <!-- Pie de tabla -->
                                       <tfoot>
                                           <tr>
-                                      
+
                                               <th>CEDULA</th>
                                               <th>NOMBRES</th>
                                               <th>ACCIONES</th>
@@ -286,7 +285,7 @@
                                                   </div>
                                               </div>
                                           </div>
-                                          <input type="hidden" id="id_invitado" name="id_invitado">
+                                          
                                       </div>
                               </div>
                               <div class="modal-footer">

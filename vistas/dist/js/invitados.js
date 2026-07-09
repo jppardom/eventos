@@ -106,10 +106,24 @@ $(".capturarEstudiantes").click(function () {
   var cedula = $(this).attr("cedula");
   var nombres = $(this).attr("nombres");
   var apellidos = $(this).attr("apellidos");
-  console.log("Elementos ", id_estudiante, cedula, nombres, apellidos)
+  
 
    $("#codigoEstudiante").val(id_estudiante);
    $("#txtCedula").val(cedula);
    $("#txtNombres").val(apellidos + " " + nombres);
 
 })
+
+//construcción de codigo 
+$(document).ready(function(e){
+  $('#crearEvento').change(function() {
+    const id_invitado = $("#id_invitado").val();
+    const cedula = $("#txtCedula").val()
+    const cupo = $("#crearCupo").val()
+    const evento = $("#crearEvento option:selected").text().replace(/\s/g, '').trim();
+    const codigoqr = "QR_"+id_invitado+"_"+evento+"_"+cupo+"_"+cedula;
+    $("#crearqr").val(codigoqr)
+    
+  });
+});
+

@@ -1,33 +1,39 @@
 <?php
-class ControladorInvitado{
+class ControladorInvitado
+{
     #Función para preparar los datos para guardar
-    public function ctrlGuardarInvitado (){
-        
-        
-        
-        
-        if(isset($_POST["crearEstudiante"]) &&
-isset($_POST["crearEvento"]) &&
-isset($_POST["crearCupo"]) &&
-isset($_POST["crearqr"])){
+    public function ctrlGuardarInvitado()
+    {
 
-            
+
+
+
+        if (
+            isset($_POST["codigoEstudiante"]) &&
+            isset($_POST["crearEvento"]) &&
+            isset($_POST["crearCupo"]) &&
+            isset($_POST["crearqr"])
+        ) {
+
+
             $data = array(
+                'id_invitado' =>  $_POST['id_invitado'],
 
-"crearEstudiante" => $_POST["crearEstudiante"],
+                "crearEstudiante" => $_POST["codigoEstudiante"],
 
-"crearEvento" => $_POST["crearEvento"],
+                "crearEvento" => $_POST["crearEvento"],
 
-"crearCupo" => $_POST["crearCupo"],
+                "crearCupo" => $_POST["crearCupo"],
 
-"crearqr" => $_POST["crearqr"]
+                "crearqr" => $_POST["crearqr"]
 
-);
+            );
             
+
             $inv = ModeloInvitado::guardarInvitado($data);
             echo $inv;
 
-            if ($inv == "OK"){
+            if ($inv == "OK") {
                 echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -41,7 +47,7 @@ isset($_POST["crearqr"])){
                         })
                       </script>
                     ';
-            }else{
+            } else {
                 echo '<script>
                         Swal.fire({
                             icon:"error",
@@ -56,32 +62,33 @@ isset($_POST["crearqr"])){
                       </script>
                 ';
             }
-         }
+        }
     }
 
     #Función para preparar datos la una consulta
-    public static function ctrlCargarDatosI ($parametro, $id){
+    public static function ctrlCargarDatosI($parametro, $id)
+    {
         $res = ModeloInvitado::traerDatos($parametro, $id);
-        return $res ;
-
+        return $res;
     }
 
 
-#Función para actualizar dartos 
-    public function ctrlActualizarDatosI (){
-        if (isset($_POST['editarEstudiante']) && isset($_POST['editarEvento']) && isset($_POST['editarCupo']) && isset($_POST['editarqr'])){
-                $data = array (
-                    'id_invitado' => (int) $_POST['id_invitado'],
-                    'id_estudiante' => (int) $_POST['editarEstudiante'],
-                    'id_evento' => (int) $_POST['editarEvento'],
-                    'cupo' => (int) $_POST['editarCupo'],
-                    'codigo_qr' => $_POST['editarqr']
-                );
-                var_dump($data);
-                $res = ModeloInvitado::editarDatosI ($data);
-                echo $res;
+    #Función para actualizar dartos 
+    public function ctrlActualizarDatosI()
+    {
+        if (isset($_POST['editarEstudiante']) && isset($_POST['editarEvento']) && isset($_POST['editarCupo']) && isset($_POST['editarqr'])) {
+            $data = array(
+                
+                'id_estudiante' => (int) $_POST['editarEstudiante'],
+                'id_evento' => (int) $_POST['editarEvento'],
+                'cupo' => (int) $_POST['editarCupo'],
+                'codigo_qr' => $_POST['editarqr']
+            );
+            var_dump($data);
+            $res = ModeloInvitado::editarDatosI($data);
+            echo $res;
 
-            if ($res == "OK"){
+            if ($res == "OK") {
                 echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -95,7 +102,7 @@ isset($_POST["crearqr"])){
                         })
                       </script>
                     ';
-            }else{
+            } else {
                 echo '<script>
                         Swal.fire({
                             icon:"error",
@@ -110,36 +117,37 @@ isset($_POST["crearqr"])){
                       </script>
                 ';
             }
-            }
+        }
     }
     #Función para eliminar datos
-    public static function ctrlEliminarI($id){
+    public static function ctrlEliminarI($id)
+    {
         $res = ModeloInvitado::EliminarDatosI((int)$id);
         return $res;
-
     }
     #Función para contar los resgistros
-    public static function ctrlContarInvitados(){
+    public static function ctrlContarInvitados()
+    {
         $res = ModeloInvitado::contarInvitados();
         return $res;
     }
 
     #Función para generar el id_invitados
-    public static function ctrlGenerarId(){
+    public static function ctrlGenerarId()
+    {
         // Combinación de números, letras minúsculas y mayúsculas
         $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $codigo = '';
         $max = strlen($caracteres) - 1;
-        do{
+        do {
 
             for ($i = 0; $i < 10; $i++) {
                 // random_int es criptográficamente seguro y mejor que rand()
                 $codigo .= $caracteres[random_int(0, $max)];
             }
-        $res = ModeloInvitado::existeCodigo($codigo);
-        echo $res;
-        
-        }while ($res);
+            $res = ModeloInvitado::existeCodigo($codigo);
+            echo $res;
+        } while ($res);
         return $codigo;
     }
 }
