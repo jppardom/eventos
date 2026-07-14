@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2026 a las 15:37:42
+-- Tiempo de generación: 14-07-2026 a las 15:50:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -139,13 +139,13 @@ CREATE TABLE `invitados` (
 
 INSERT INTO `invitados` (`id_invitado`, `id_estudiante`, `id_evento`, `cupo`, `codigo_qr`, `qr`) VALUES
 ('fsYMEZkgqd', 4, 4, 3, 'QR_fsYMEZkgqd_TallerdeBorradoSeguro_3_4444444444', 'public/qrs/fsYMEZkgqd.png'),
-('INV0000001', 1, 1, 2, 'QR_CAMPANIA_RAEE_01', 'public/qr/error.png'),
-('INV0000002', 2, 2, 1, 'QR_SEMINARIO_GREEN_02', 'public/qr/error.png'),
-('INV0000003', 3, 1, 3, 'QR_CAMPANIA_RAEE_03', 'public/qr/error.png'),
-('INV0000004', 4, 4, 1, 'QR_TALLER_BORRADO_04', 'public/qr/error.png'),
-('INV0000005', 5, 2, 2, 'QR_SEMINARIO_GREEN_05', 'public/qr/error.png'),
-('INV00007', 1, 3, 2, 'Seminario123_2_invitados', 'public/qr/error.png'),
-('YJXM42LtyK', 5, 2, 2, 'QR_YJXM42LtyK_SeminarioGreenIT2026_2_5555555555', 'public/qr/error.png');
+('INV0000001', 1, 1, 2, 'QR_CAMPANIA_RAEE_01', 'public/qrs/error.png'),
+('INV0000002', 2, 2, 1, 'QR_SEMINARIO_GREEN_02', 'public/qrs/error.png'),
+('INV0000003', 3, 1, 3, 'QR_CAMPANIA_RAEE_03', 'public/qrs/error.png'),
+('INV0000004', 4, 4, 1, 'QR_TALLER_BORRADO_04', 'public/qrs/error.png'),
+('INV0000005', 5, 2, 2, 'QR_SEMINARIO_GREEN_05', 'public/qrs/error.png'),
+('INV00007', 1, 3, 2, 'Seminario123_2_invitados', 'public/qrs/error.png'),
+('YJXM42LtyK', 5, 2, 2, 'QR_YJXM42LtyK_SeminarioGreenIT2026_2_5555555555', 'public/qrs/error.png');
 
 -- --------------------------------------------------------
 
