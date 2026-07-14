@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-06-2026 a las 21:58:53
+-- Tiempo de generación: 14-07-2026 a las 15:37:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,11 +42,11 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id_estudiante`, `cedula`, `nombres`, `apellido`, `correo`, `especialidad`, `periodo`) VALUES
-(1, '1105355223', 'Jose Jhovanny', 'Cueva Zamora', 'jj_cueva@marianosamaniego.edu.ec', 'Desarrollo de Software', 'abril - sep 2026'),
-(2, '1105463278', 'Jose Manuel', 'Quezada', 'jm_quezada@marianosamaniego.edu.ec', 'Desarrollo de Software', 'abril - sep 2026'),
-(3, '1103344671', 'Jorge Luis', 'Perez', 'jl_perez@marianosamaniego.edu.ec', 'Desarrollo de Software', 'abril - sep 2026'),
-(4, '1107233001', 'Diego Paul', 'Flores', 'dp_flores@marianosamaniego.edu.ec', 'Desarrollo de Software', 'abril - sep 2026'),
-(5, '1103155002', 'Alexander', 'Briceño', 'al_bricenio@marianosamaniego.edu.ec', 'Desarrollo de Software', 'abril - sep 2026');
+(1, '1111111111', 'María José', 'Armijos Pineda', 'estudiante1@example.com', 'Desarrollo de Software', 'abril - sep 2026'),
+(2, '2222222222', 'Luis Alfredo', 'Jaramillo Cueva', 'estudiante2@example.com', 'Desarrollo de Software', 'abril - sep 2026'),
+(3, '3333333333', 'Ana Belén', 'Torres Valarezo', 'estudiante3@example.com', 'Desarrollo de Software', 'abril - sep 2026'),
+(4, '4444444444', 'Diego Paúl', 'Medina Loaiza', 'estudiante4@example.com', 'Desarrollo de Software', 'abril - sep 2026'),
+(5, '5555555555', 'Diana Carolina', 'Espinoza Córdova', 'estudiante5@example.com', 'Desarrollo de Software', 'abril - sep 2026');
 
 -- --------------------------------------------------------
 
@@ -129,19 +129,23 @@ CREATE TABLE `invitados` (
   `id_estudiante` int(10) NOT NULL,
   `id_evento` int(10) NOT NULL,
   `cupo` int(2) NOT NULL,
-  `codigo_qr` varchar(250) NOT NULL
+  `codigo_qr` varchar(250) NOT NULL,
+  `qr` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `invitados`
 --
 
-INSERT INTO `invitados` (`id_invitado`, `id_estudiante`, `id_evento`, `cupo`, `codigo_qr`) VALUES
-('INV0000001', 1, 1, 2, 'QR_CAMPANIA_RAEE_01'),
-('INV0000002', 2, 2, 1, 'QR_SEMINARIO_GREEN_02'),
-('INV0000003', 3, 1, 3, 'QR_CAMPANIA_RAEE_03'),
-('INV0000004', 4, 4, 1, 'QR_TALLER_BORRADO_04'),
-('INV0000005', 5, 2, 2, 'QR_SEMINARIO_GREEN_05');
+INSERT INTO `invitados` (`id_invitado`, `id_estudiante`, `id_evento`, `cupo`, `codigo_qr`, `qr`) VALUES
+('fsYMEZkgqd', 4, 4, 3, 'QR_fsYMEZkgqd_TallerdeBorradoSeguro_3_4444444444', 'public/qrs/fsYMEZkgqd.png'),
+('INV0000001', 1, 1, 2, 'QR_CAMPANIA_RAEE_01', 'public/qr/error.png'),
+('INV0000002', 2, 2, 1, 'QR_SEMINARIO_GREEN_02', 'public/qr/error.png'),
+('INV0000003', 3, 1, 3, 'QR_CAMPANIA_RAEE_03', 'public/qr/error.png'),
+('INV0000004', 4, 4, 1, 'QR_TALLER_BORRADO_04', 'public/qr/error.png'),
+('INV0000005', 5, 2, 2, 'QR_SEMINARIO_GREEN_05', 'public/qr/error.png'),
+('INV00007', 1, 3, 2, 'Seminario123_2_invitados', 'public/qr/error.png'),
+('YJXM42LtyK', 5, 2, 2, 'QR_YJXM42LtyK_SeminarioGreenIT2026_2_5555555555', 'public/qr/error.png');
 
 -- --------------------------------------------------------
 

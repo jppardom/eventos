@@ -1,4 +1,5 @@
 <?php
+require_once "libs/phpqrcode/qrlib.php";
 class ControladorInvitado
 {
     #Función para preparar los datos para guardar
@@ -14,6 +15,16 @@ class ControladorInvitado
             isset($_POST["crearCupo"]) &&
             isset($_POST["crearqr"])
         ) {
+            $ruta_qrs = "public/qrs";
+            if (!file_exists($ruta_qrs)) {
+                mkdir($ruta_qrs, 0755, true);
+            }
+            $archivo_nombre = $ruta_qrs ."/". $_POST["id_invitado"] . '.png';
+            $texto_qr = "Código QR: " .trim($_POST["crearqr"]). " \n 
+                        Nombre: " . $_POST['txtNombres'] . "\n
+                        Evento: ". $_POST["evento"]. "\n
+                        Invitados: ". $_POST["crearCupo"];
+            QRcode::png($texto_qr, $archivo_nombre, 'M', 5, 2);
 
 
             $data = array(
@@ -25,7 +36,9 @@ class ControladorInvitado
 
                 "crearCupo" => $_POST["crearCupo"],
 
-                "crearqr" => $_POST["crearqr"]
+                "crearqr" => $_POST["crearqr"], 
+
+                "qr" => $archivo_nombre
 
             );
             

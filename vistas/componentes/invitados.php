@@ -97,7 +97,7 @@
 
                                               
                                                   <div class="input-group mb-3">
-                                                      <input type="text" name="crearqr" id="crearqr" class="form-control" placeholder="Ingrese el código QR" required>
+                                                      <input type="text" name="crearqr" id="crearqr" class="form-control" placeholder="Ingrese el código QR" required readonly>
                                                       <div class="input-group-append">
                                                           <span class="input-group-text"><i class="fas fa-qrcode"></i></span>
                                                       </div>
@@ -109,6 +109,7 @@
                                             $id = $objInvitado->ctrlGenerarId();
                                             ?>
                                           <input type="hidden" name="id_invitado" id="id_invitado" class="form-control" value="<?php echo $id; ?>" placeholder="Ingrese" required>
+                                          <input type="hidden" name="evento" id="evento" class="form-control">
                                           
                                       </div>
                               </div>

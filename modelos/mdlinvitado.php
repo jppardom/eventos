@@ -10,8 +10,8 @@ class ModeloInvitado
 
 
         $stm = conexion::conectar()->prepare(
-            "INSERT INTO invitados(id_Invitado, id_estudiante, id_evento, cupo, codigo_qr)
-            VALUES(:id_invitado, :id_estudiante, :id_evento, :cupo, :codigo_qr)"
+            "INSERT INTO invitados(id_Invitado, id_estudiante, id_evento, cupo, codigo_qr, qr)
+            VALUES(:id_invitado, :id_estudiante, :id_evento, :cupo, :codigo_qr, :qr)"
         );
         $stm->bindParam(":id_invitado", $data["id_invitado"], PDO::PARAM_STR);
 
@@ -22,6 +22,8 @@ class ModeloInvitado
         $stm->bindParam(":cupo", $data["crearCupo"], PDO::PARAM_INT);
 
         $stm->bindParam(":codigo_qr", $data["crearqr"], PDO::PARAM_STR);
+
+        $stm->bindParam(":qr", $data["qr"], PDO::PARAM_STR);
         if ($stm->execute()) {
 
             return "OK";
