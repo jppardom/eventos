@@ -99,20 +99,32 @@ if (isset($_SESSION["login"]) && ($_SESSION["login"] == "activo")) {
 <script src="vistas/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <!-- Archivos propios-->
-<script src="vistas/dist/js/peliculas.js"></script>
-<?php if (isset($_GET["enlace"]) && $_GET["enlace"] == "usuarios") { ?>
-  <script src="vistas/dist/js/usuarios.js"></script>
-<?php } ?>
+<?php
 
-<!-- archivos propios de ingresos-->
-<script src="vistas/dist/js/ingresos.js"></script>
-<!-- Fin de Ingresos.js-->
+if (isset($_GET["enlace"])) {
+  switch ($_GET["enlace"]) {
+    case "usuarios":
+      echo "<script src='vistas/dist/js/usuarios.js'></script>";
+      break;
+    case "estudiantes":
+      echo "<script src='vistas/dist/js/estudiantes.js'></script>";
+      break;
+    case "eventos":
+      echo "<script src='vistas/dist/js/eventos.js'></script>";
+      break;
+    case "Invitados":
+      echo "<script src='vistas/dist/js/invitados.js'></script>";
+      break;
+    case "ingresos":
+      echo "<script src='vistas/dist/js/ingresos.js'></script>";
+      break;
+    case "peliculas":
+      echo "<script src='vistas/dist/js/peliculas.js'></script>";
+      break;
+  }
+}
 
-<!-- archivos propios de estudiantes-->
-<script src="vistas/dist/js/estudiantes.js"></script>
-<!-- Fin de Estudiantes.js-->
-<script src="vistas/dist/js/eventos.js"></script>
-<script src="vistas/dist/js/invitados.js"></script>
+?>
 
 
 </body>

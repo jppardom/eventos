@@ -20,11 +20,8 @@ class ControladorInvitado
                 mkdir($ruta_qrs, 0755, true);
             }
             $archivo_nombre = $ruta_qrs ."/". $_POST["id_invitado"] . '.png';
-            $texto_qr = "Código QR: " .trim($_POST["crearqr"]). " \n 
-                        Nombre: " . $_POST['txtNombres'] . "\n
-                        Evento: ". $_POST["evento"]. "\n
-                        Invitados: ". $_POST["crearCupo"];
-            QRcode::png($texto_qr, $archivo_nombre, 'M', 5, 2);
+            $texto_qr = $_POST["id_invitado"];
+            QRcode::png($texto_qr, $archivo_nombre, 'M', 5, 4);
 
 
             $data = array(

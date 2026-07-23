@@ -322,7 +322,8 @@
                                   <td><?php echo $value["estudiantes"]; ?></td>
                                   <td><?php echo $value["eventos"]; ?></td>
                                   <td><?php echo $value["cupo"];  ?></td>
-                                  <td><?php echo $value["codigo_qr"];  ?></td>
+                                  <td> <img src="<?php echo $value['qr'];  ?>" width = "64"></td>
+                                 
                                   <td>
                                       <div class="btn-group">
                                           <button class="btn btn-warning"><i class="fas fa-edit editarInvitadoTabla" data-toggle="modal" data-target="#myModalEditar" id_invitados="<?php echo $value["id_invitado"]; ?>"></i></button>
